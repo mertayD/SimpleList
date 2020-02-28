@@ -25,14 +25,24 @@ public class SimpleList {
 	
 	/*
 	 * This function adds one element to the SimpleList at 1st position and shifts other elements to right,
-	 * if any overflow it just drops it
+	 * if any overflow it increases the size of the array by 50% so there is always room
 	 * @param int item to be inserted
 	 * @return void
 	 */
 	void add (int item)
 	{
-		if(count != 10)
+		if(count != list.length)
 		{
+			count++;
+		}
+		else {
+			int new_size = (int)(count + count/2);
+			int[] temp = new int[new_size];
+			for(int i = 0; i < count; i++)
+			{
+				temp[i] = list[i];
+			}
+			list = temp;
 			count++;
 		}
 		
@@ -64,6 +74,20 @@ public class SimpleList {
 			for(int iterator = index; (iterator > -1 && iterator < count); iterator ++)
 			{
 				list[iterator] = list[iterator+1];
+			}
+		}
+		if(list.length != 1)
+		{
+			double percent = count/list.length;
+			if(percent < 0.75)
+			{
+				int new_size = (int)(list.length - list.length/2);
+				int[] temp = new int[new_size];
+				for(int i = 0; i < count; i++)
+				{
+					temp[i] = list[i];
+				}
+				list = temp;
 			}
 		}
 		
