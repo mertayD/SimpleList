@@ -4,6 +4,7 @@ package cse360assign2;
 * Class ID: 198
 * Assignment 2
 * Version: 2
+* Git Repo Link: https://github.com/mertayD/SimpleList
 * This file contains the implementation of the class SimpleList.
 * SimpleList class, is a class that has basic properties such as adding elements to the first index and shift rest by 1.
 * It acts pretty much like stack, Last In First Out (LIFO) but SimpleList has capability to increase it's size by 50% if needed
@@ -39,7 +40,7 @@ public class SimpleList {
 			count++;
 		}
 		else {
-			int new_size = (int)(count + Math.floor(count/2));
+			int new_size = (int)(count + count/2);
 			int[] temp = new int[new_size];
 			for(int i = 0; i < count; i++)
 			{
@@ -81,10 +82,10 @@ public class SimpleList {
 		}
 		if(list.length != 1)
 		{
-			double percent = count/list.length;
+			double percent = (double)count/list.length;
 			if(percent < 0.75)
 			{
-				int new_size = (int)(list.length - Math.floor(list.length/4));
+				int new_size = (int)(list.length - list.length/4.0);
 				int[] temp = new int[new_size];
 				for(int i = 0; i < count; i++)
 				{
@@ -149,7 +150,7 @@ public class SimpleList {
 	{
 		if(count == list.length)
 		{
-			int new_size = (int)(count + Math.floor(count/2));
+			int new_size = (int)(count + count/2);
 			int[] temp = new int[new_size];
 			for(int i = 0; i < count; i++)
 			{
